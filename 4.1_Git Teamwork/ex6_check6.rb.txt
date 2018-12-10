@@ -1,0 +1,12 @@
+# tests to see if a new commit was made 
+# tests by comparing the bio_questions SHA to the master SHA. They should be different if a commit was made on bio-questions branch
+
+bio_questions_sha = `cd my-quizzes; cat .git/refs/heads/bio-questions`.chomp
+
+master_sha = `cd my-quizzes; cat .git/refs/heads/master`.chomp
+
+if bio_questions_sha != master_sha
+	exit 0
+else 
+	exit 1
+end
